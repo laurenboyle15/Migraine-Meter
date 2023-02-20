@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B8E205CDC6A109BD0423AFCF /* Pods_Migraine_Meter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E4B21E51716A7BC723F4A0 /* Pods_Migraine_Meter.framework */; };
+		D08C4DDA299BFE1D00FDDCBA /* Migraine_MeterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C4DD9299BFE1D00FDDCBA /* Migraine_MeterApp.swift */; };
+		D08C4DDC299BFE1D00FDDCBA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C4DDB299BFE1D00FDDCBA /* ContentView.swift */; };
+		D08C4DDE299BFE2000FDDCBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08C4DDD299BFE2000FDDCBA /* Assets.xcassets */; };
+		D08C4DE1299BFE2000FDDCBA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08C4DE0299BFE2000FDDCBA /* Preview Assets.xcassets */; };
+		D08C4DED299C0B7700FDDCBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08C4DEC299C0B7700FDDCBA /* GoogleService-Info.plist */; };
+		D08C4DEF299C106500FDDCBA /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C4DEE299C106500FDDCBA /* SignInView.swift */; };
+		D08C4DF1299C113100FDDCBA /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C4DF0299C113100FDDCBA /* SignUpScreen.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0DBB8B14866DE952379339E9 /* Pods-Migraine_Meter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Migraine_Meter.debug.xcconfig"; path = "Target Support Files/Pods-Migraine_Meter/Pods-Migraine_Meter.debug.xcconfig"; sourceTree = "<group>"; };
+		5436E3F2E4BA8618209BA50F /* Pods-Migraine_Meter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Migraine_Meter.release.xcconfig"; path = "Target Support Files/Pods-Migraine_Meter/Pods-Migraine_Meter.release.xcconfig"; sourceTree = "<group>"; };
+		B6E4B21E51716A7BC723F4A0 /* Pods_Migraine_Meter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Migraine_Meter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D08C4DD6299BFE1D00FDDCBA /* Migraine_Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Migraine_Meter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D08C4DD9299BFE1D00FDDCBA /* Migraine_MeterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migraine_MeterApp.swift; sourceTree = "<group>"; };
+		D08C4DDB299BFE1D00FDDCBA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D08C4DDD299BFE2000FDDCBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D08C4DE0299BFE2000FDDCBA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D08C4DEC299C0B7700FDDCBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D08C4DEE299C106500FDDCBA /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		D08C4DF0299C113100FDDCBA /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D08C4DD3299BFE1D00FDDCBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8E205CDC6A109BD0423AFCF /* Pods_Migraine_Meter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		44C65D13B736AC489AFA1069 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6E4B21E51716A7BC723F4A0 /* Pods_Migraine_Meter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C1F1F72874EE5D3CE650D17E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0DBB8B14866DE952379339E9 /* Pods-Migraine_Meter.debug.xcconfig */,
+				5436E3F2E4BA8618209BA50F /* Pods-Migraine_Meter.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D08C4DCD299BFE1D00FDDCBA = {
+			isa = PBXGroup;
+			children = (
+				D08C4DD8299BFE1D00FDDCBA /* Migraine_Meter */,
+				D08C4DD7299BFE1D00FDDCBA /* Products */,
+				C1F1F72874EE5D3CE650D17E /* Pods */,
+				44C65D13B736AC489AFA1069 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D08C4DD7299BFE1D00FDDCBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D08C4DD6299BFE1D00FDDCBA /* Migraine_Meter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D08C4DD8299BFE1D00FDDCBA /* Migraine_Meter */ = {
+			isa = PBXGroup;
+			children = (
+				D08C4DD9299BFE1D00FDDCBA /* Migraine_MeterApp.swift */,
+				D08C4DDB299BFE1D00FDDCBA /* ContentView.swift */,
+				D08C4DDD299BFE2000FDDCBA /* Assets.xcassets */,
+				D08C4DEC299C0B7700FDDCBA /* GoogleService-Info.plist */,
+				D08C4DDF299BFE2000FDDCBA /* Preview Content */,
+				D08C4DEE299C106500FDDCBA /* SignInView.swift */,
+				D08C4DF0299C113100FDDCBA /* SignUpScreen.swift */,
+			);
+			path = Migraine_Meter;
+			sourceTree = "<group>";
+		};
+		D08C4DDF299BFE2000FDDCBA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D08C4DE0299BFE2000FDDCBA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D08C4DD5299BFE1D00FDDCBA /* Migraine_Meter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D08C4DE4299BFE2000FDDCBA /* Build configuration list for PBXNativeTarget "Migraine_Meter" */;
+			buildPhases = (
+				68E426A4F7789C039DFDE6D7 /* [CP] Check Pods Manifest.lock */,
+				D08C4DD2299BFE1D00FDDCBA /* Sources */,
+				D08C4DD3299BFE1D00FDDCBA /* Frameworks */,
+				D08C4DD4299BFE1D00FDDCBA /* Resources */,
+				0682CBF30AC9AA2AB17DEC57 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Migraine_Meter;
+			productName = Migraine_Meter;
+			productReference = D08C4DD6299BFE1D00FDDCBA /* Migraine_Meter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D08C4DCE299BFE1D00FDDCBA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					D08C4DD5299BFE1D00FDDCBA = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = D08C4DD1299BFE1D00FDDCBA /* Build configuration list for PBXProject "Migraine_Meter" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D08C4DCD299BFE1D00FDDCBA;
+			productRefGroup = D08C4DD7299BFE1D00FDDCBA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D08C4DD5299BFE1D00FDDCBA /* Migraine_Meter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D08C4DD4299BFE1D00FDDCBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D08C4DE1299BFE2000FDDCBA /* Preview Assets.xcassets in Resources */,
+				D08C4DED299C0B7700FDDCBA /* GoogleService-Info.plist in Resources */,
+				D08C4DDE299BFE2000FDDCBA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0682CBF30AC9AA2AB17DEC57 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Migraine_Meter/Pods-Migraine_Meter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Migraine_Meter/Pods-Migraine_Meter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Migraine_Meter/Pods-Migraine_Meter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68E426A4F7789C039DFDE6D7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Migraine_Meter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D08C4DD2299BFE1D00FDDCBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D08C4DEF299C106500FDDCBA /* SignInView.swift in Sources */,
+				D08C4DDC299BFE1D00FDDCBA /* ContentView.swift in Sources */,
+				D08C4DDA299BFE1D00FDDCBA /* Migraine_MeterApp.swift in Sources */,
+				D08C4DF1299C113100FDDCBA /* SignUpScreen.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D08C4DE2299BFE2000FDDCBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D08C4DE3299BFE2000FDDCBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D08C4DE5299BFE2000FDDCBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DBB8B14866DE952379339E9 /* Pods-Migraine_Meter.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Migraine_Meter/Preview Content\"";
+				DEVELOPMENT_TEAM = V5Q2NVWL67;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.laurenboyle.Migraine-Meter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D08C4DE6299BFE2000FDDCBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5436E3F2E4BA8618209BA50F /* Pods-Migraine_Meter.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Migraine_Meter/Preview Content\"";
+				DEVELOPMENT_TEAM = V5Q2NVWL67;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.laurenboyle.Migraine-Meter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D08C4DD1299BFE1D00FDDCBA /* Build configuration list for PBXProject "Migraine_Meter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D08C4DE2299BFE2000FDDCBA /* Debug */,
+				D08C4DE3299BFE2000FDDCBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D08C4DE4299BFE2000FDDCBA /* Build configuration list for PBXNativeTarget "Migraine_Meter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D08C4DE5299BFE2000FDDCBA /* Debug */,
+				D08C4DE6299BFE2000FDDCBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D08C4DCE299BFE1D00FDDCBA /* Project object */;
+}
