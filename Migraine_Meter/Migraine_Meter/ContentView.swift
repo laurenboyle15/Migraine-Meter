@@ -11,6 +11,12 @@ import FirebaseCore
 import Firebase
 import FirebaseFirestore
 
+import SwiftUI
+import FirebaseAuth
+import FirebaseCore
+import Firebase
+import FirebaseFirestore
+
 class AppViewModel: ObservableObject {
     let auth = Auth.auth()
     
@@ -36,11 +42,11 @@ class AppViewModel: ObservableObject {
     }
     
     // the function that is called to create a user in the database
-    func signUp(email: String, password: String, name: String) {
+    func signUp(email: String, password: String, name: String, dob: String, sex: String) {
         auth.createUser(withEmail: email, password: password) { [weak self] result, error in
             let db = Firestore.firestore()
             
-            db.collection("users").addDocument(data: ["firstName": name, "uid": result!.user.uid]) { error in
+            db.collection("users").addDocument(data: ["firstName": name, "email": email, "dob": dob, "sex": sex, "uid": result!.user.uid]) { error in
                 if error == nil {
                     //No errors
                     print("No errors")
@@ -59,6 +65,13 @@ class AppViewModel: ObservableObject {
             
         }
     }
+    
+    // function that signs out user once button is clicked
+    func signOut() {
+        try? auth.signOut()
+        
+        self.signedIn = false
+    }
 }
 
 
@@ -69,8 +82,24 @@ struct ContentView: View {
         NavigationView {
             // checks if user is signed in and changes view to homescreen at open
             if viewModel.signedIn {
-                Text("Hello, world!")
-                    .padding()
+                TabView {
+                    HeadacheLogScreen()
+                        .tabItem{
+                            Label("Home", systemImage: "square.and.pencil")
+                        }
+                    HeadacheHistoryScreen()
+                        .tabItem {
+                            Label("History", systemImage: "calendar")
+                        }
+                    HeadachePersonalizationScreen()
+                        .tabItem {
+                            Label("Personalize", systemImage: "brain.head.profile")
+                        }
+                    HeadacheAnalyticsScreen()
+                        .tabItem {
+                            Label("Analytics", systemImage: "ruler")
+                        }
+                }
             }
             else {
                 SignInView()

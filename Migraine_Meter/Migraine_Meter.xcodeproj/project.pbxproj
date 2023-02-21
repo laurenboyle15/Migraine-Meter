@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B8E205CDC6A109BD0423AFCF /* Pods_Migraine_Meter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E4B21E51716A7BC723F4A0 /* Pods_Migraine_Meter.framework */; };
+		D08A049D29A40F0700489A69 /* HeadacheLogScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A049C29A40F0700489A69 /* HeadacheLogScreen.swift */; };
+		D08A049F29A53E9D00489A69 /* HeadacheHistoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A049E29A53E9D00489A69 /* HeadacheHistoryScreen.swift */; };
+		D08A04A129A53EC700489A69 /* HeadachePersonalizationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A04A029A53EC700489A69 /* HeadachePersonalizationScreen.swift */; };
+		D08A04A329A53ED900489A69 /* HeadacheAnalyticsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A04A229A53ED900489A69 /* HeadacheAnalyticsScreen.swift */; };
 		D08C4DDA299BFE1D00FDDCBA /* Migraine_MeterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C4DD9299BFE1D00FDDCBA /* Migraine_MeterApp.swift */; };
 		D08C4DDC299BFE1D00FDDCBA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C4DDB299BFE1D00FDDCBA /* ContentView.swift */; };
 		D08C4DDE299BFE2000FDDCBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08C4DDD299BFE2000FDDCBA /* Assets.xcassets */; };
@@ -21,6 +25,10 @@
 		0DBB8B14866DE952379339E9 /* Pods-Migraine_Meter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Migraine_Meter.debug.xcconfig"; path = "Target Support Files/Pods-Migraine_Meter/Pods-Migraine_Meter.debug.xcconfig"; sourceTree = "<group>"; };
 		5436E3F2E4BA8618209BA50F /* Pods-Migraine_Meter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Migraine_Meter.release.xcconfig"; path = "Target Support Files/Pods-Migraine_Meter/Pods-Migraine_Meter.release.xcconfig"; sourceTree = "<group>"; };
 		B6E4B21E51716A7BC723F4A0 /* Pods_Migraine_Meter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Migraine_Meter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D08A049C29A40F0700489A69 /* HeadacheLogScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadacheLogScreen.swift; sourceTree = "<group>"; };
+		D08A049E29A53E9D00489A69 /* HeadacheHistoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadacheHistoryScreen.swift; sourceTree = "<group>"; };
+		D08A04A029A53EC700489A69 /* HeadachePersonalizationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadachePersonalizationScreen.swift; sourceTree = "<group>"; };
+		D08A04A229A53ED900489A69 /* HeadacheAnalyticsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadacheAnalyticsScreen.swift; sourceTree = "<group>"; };
 		D08C4DD6299BFE1D00FDDCBA /* Migraine_Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Migraine_Meter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08C4DD9299BFE1D00FDDCBA /* Migraine_MeterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migraine_MeterApp.swift; sourceTree = "<group>"; };
 		D08C4DDB299BFE1D00FDDCBA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +96,10 @@
 				D08C4DDF299BFE2000FDDCBA /* Preview Content */,
 				D08C4DEE299C106500FDDCBA /* SignInView.swift */,
 				D08C4DF0299C113100FDDCBA /* SignUpScreen.swift */,
+				D08A049C29A40F0700489A69 /* HeadacheLogScreen.swift */,
+				D08A049E29A53E9D00489A69 /* HeadacheHistoryScreen.swift */,
+				D08A04A029A53EC700489A69 /* HeadachePersonalizationScreen.swift */,
+				D08A04A229A53ED900489A69 /* HeadacheAnalyticsScreen.swift */,
 			);
 			path = Migraine_Meter;
 			sourceTree = "<group>";
@@ -216,6 +228,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D08C4DEF299C106500FDDCBA /* SignInView.swift in Sources */,
+				D08A049F29A53E9D00489A69 /* HeadacheHistoryScreen.swift in Sources */,
+				D08A04A129A53EC700489A69 /* HeadachePersonalizationScreen.swift in Sources */,
+				D08A04A329A53ED900489A69 /* HeadacheAnalyticsScreen.swift in Sources */,
+				D08A049D29A40F0700489A69 /* HeadacheLogScreen.swift in Sources */,
 				D08C4DDC299BFE1D00FDDCBA /* ContentView.swift in Sources */,
 				D08C4DDA299BFE1D00FDDCBA /* Migraine_MeterApp.swift in Sources */,
 				D08C4DF1299C113100FDDCBA /* SignUpScreen.swift in Sources */,

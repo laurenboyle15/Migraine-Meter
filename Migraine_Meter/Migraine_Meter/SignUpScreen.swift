@@ -13,6 +13,10 @@ struct SignUpScreen: View {
     @State var password = ""
     
     @State var firstName = ""
+    @State var dob = ""
+    @State var sex = "Male"
+    let sexOptions = ["Male", "Female", "Other"]
+    
     
     var tan = Color(red: 255/255, green: 247/255, blue: 229/255)
     
@@ -53,12 +57,23 @@ struct SignUpScreen: View {
                     .background(tan)
                     .padding()
                     .cornerRadius(8)
+                TextField("Date of Birth", text: $dob)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                    .background(tan)
+                    .padding()
+                    .cornerRadius(8)
+                Picker("Select sex", selection: $sex) {
+                    ForEach(sexOptions, id: \.self) {
+                        Text($0)
+                    }
+                }
                 
                 Button(action: {
-                    guard !firstName.isEmpty, !email.isEmpty, !password.isEmpty else {
+                    guard !firstName.isEmpty, !email.isEmpty, !password.isEmpty, !dob.isEmpty else {
                         return
                     }
-                    viewModel.signUp(email: email, password: password, name: firstName)
+                    viewModel.signUp(email: email, password: password, name: firstName, dob: dob, sex: sex)
                     
                 }, label: {
                     Text("Create Account")
