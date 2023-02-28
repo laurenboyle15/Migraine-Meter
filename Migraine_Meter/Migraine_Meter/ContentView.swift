@@ -22,6 +22,10 @@ class AppViewModel: ObservableObject {
     
     @Published var signedIn = false // changes view in real time
     @Published var locations = [HeadacheLocation]() //array of possible headache locations
+    @Published var headacheEntry = [HeadacheEntry]()
+        //array to hold all entries from user
+    @Published var foodLog = [FoodLog]()
+        //array to hold food entry
     
     // changes variable in real time
     var isSignedIn: Bool {
@@ -74,6 +78,30 @@ class AppViewModel: ObservableObject {
         self.signedIn = false
     }
     
+    //adds food to list
+    func add (entry: FoodLog) {
+        foodLog.append(entry)
+    }
+    
+    //adds headache to users log
+    func addHeadacheEntry(hEntry: HeadacheEntry) {
+        headacheEntry.append(hEntry)
+    }
+    
+    //saves headache entry to db
+    func saveHeadacheEntry(user: String, location: String, intensity: String, duration: String, trigger: String, remedy: String, sleep: String, notes: String) {
+        let db = Firestore.firestore()
+        db.collection("hEntry").addDocument(data: ["user": user, "location": location, "intensity": intensity, "duration": duration, "trigger": trigger, "remedy": remedy, "sleep": sleep, "notes": notes]) { error in
+            if error == nil {
+                //no errors
+                print("No errors")
+            } else {
+                
+            }
+        }
+
+    }
+    
     //function that gets the possible location options from db
     func getLocations() {
         let db = Firestore.firestore()
@@ -113,7 +141,8 @@ struct ContentView: View {
             // checks if user is signed in and changes view to homescreen at open
             if viewModel.signedIn {
                 TabView {
-                    HeadacheLogScreen()
+                    HeadacheLogScreen(entryHeadache: HeadacheEntry.examplehEntry)
+                        .environmentObject(viewModel)
                         .tabItem{
                             Label("Home", systemImage: "square.and.pencil")
                         }
