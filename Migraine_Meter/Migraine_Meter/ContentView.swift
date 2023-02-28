@@ -21,6 +21,7 @@ class AppViewModel: ObservableObject {
     let auth = Auth.auth()
     
     @Published var signedIn = false // changes view in real time
+    @Published var locations = [HeadacheLocation]() //array of possible headache locations
     
     // changes variable in real time
     var isSignedIn: Bool {
@@ -71,6 +72,35 @@ class AppViewModel: ObservableObject {
         try? auth.signOut()
         
         self.signedIn = false
+    }
+    
+    //function that gets the possible location options from db
+    func getLocations() {
+        let db = Firestore.firestore()
+        
+        //read doc at specific path
+        db.collection("headachelocation").getDocuments { snapshot, error in
+            //check for errors
+            if error == nil {
+                //no errors
+                print("No errors")
+                
+                if let snapshot = snapshot {
+                    
+                    //update in main thread
+                    DispatchQueue.main.async {
+                        //get all docs and display possible locations
+                        self.locations = snapshot.documents.map { d in
+                            
+                            //create location from each retrieved item
+                            return HeadacheLocation(id: d.documentID, name: d["name"] as? String ?? "")
+                        }
+                    }
+                }
+            } else {
+                //handle the errors
+            }
+        }
     }
 }
 
