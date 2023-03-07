@@ -20,6 +20,7 @@ class AppViewModel: ObservableObject {
         //array to hold all entries from user
     @Published var foodLog = [FoodLog]()
         //array to hold food entry
+    @Published var headacheHistory = [HeadacheEntry]()
     
     // changes variable in real time
     var isSignedIn: Bool {
@@ -96,6 +97,47 @@ class AppViewModel: ObservableObject {
 
     }
     
+    //get headache entries from db
+    func getHeadacheEntry() {
+        //ref to db
+        let db = Firestore.firestore()
+        
+        //read docs at specific path
+        db.collection("hEntry").getDocuments { snapshot, error in
+            //check for errors
+            if error == nil {
+                //no errors
+                
+                if let snapshot = snapshot {
+                    
+                    DispatchQueue.main.async {
+                        
+                        //get all docs and create entry
+                        self.headacheHistory = snapshot.documents.map { d in
+                            
+                            //create an entry item for each doc in db
+                            return HeadacheEntry(id: d.documentID,
+                                                 user: d["user"] as? String ?? "",
+                                                 location: d["location"] as? String ?? "",
+                                                 intensity: d["intensity"] as? String ?? "",
+                                                 duration: d["duration"] as? String ?? "",
+                                                 trigger: d["trigger"] as? String ?? "",
+                                                 remedy: d["remedy"] as? String ?? "",
+                                                 sleep: d["sleep"] as? String ?? "",
+                                                 notes: d["notes"] as? String ?? "",
+                                                 breakfast: d["breakfast"] as? String ?? "",
+                                                 lunch: d["lunch"] as? String ?? "",
+                                                 dinner: d["dinner"] as? String ?? "",
+                                                 waterAmount: d["waterAmount"] as? String ?? "",
+                                                 exerciseEntry: d["exerciseEntry"] as? String ?? "")
+                        }
+                    }
+                }
+            } else {
+                //handle errors
+            }
+        }
+    }
     
     //function that gets the possible location options from db
     func getLocations() {

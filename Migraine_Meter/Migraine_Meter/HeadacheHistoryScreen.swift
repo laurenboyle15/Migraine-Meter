@@ -9,9 +9,10 @@ import SwiftUI
 
 struct HeadacheHistoryScreen: View {
     @EnvironmentObject var viewModel: AppViewModel
+    @ObservedObject var model = AppViewModel()
     
     var body: some View {
-        VStack {
+        /*VStack {
             Text("Your Migraine History")
                 .foregroundColor(Color.blue)
                 .font(.largeTitle)
@@ -22,7 +23,14 @@ struct HeadacheHistoryScreen: View {
                 Text("Sign Out")
                     .foregroundColor(Color.red)
             }
+        } */
+        List (model.headacheHistory) { item in
+            Text(item.user)
         }
+    }
+    
+    init() {
+        model.getHeadacheEntry()
     }
 }
 
