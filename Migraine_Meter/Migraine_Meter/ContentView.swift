@@ -11,12 +11,6 @@ import FirebaseCore
 import Firebase
 import FirebaseFirestore
 
-import SwiftUI
-import FirebaseAuth
-import FirebaseCore
-import Firebase
-import FirebaseFirestore
-
 class AppViewModel: ObservableObject {
     let auth = Auth.auth()
     
@@ -89,9 +83,9 @@ class AppViewModel: ObservableObject {
     }
     
     //saves headache entry to db
-    func saveHeadacheEntry(user: String, location: String, intensity: String, duration: String, trigger: String, remedy: String, sleep: String, notes: String) {
+    func saveHeadacheEntry(user: String, location: String, intensity: String, duration: String, trigger: String, remedy: String, sleep: String, notes: String, breakfast: String, lunch: String, dinner: String, waterAmount: String, exerciseEntry: String) {
         let db = Firestore.firestore()
-        db.collection("hEntry").addDocument(data: ["user": user, "location": location, "intensity": intensity, "duration": duration, "trigger": trigger, "remedy": remedy, "sleep": sleep, "notes": notes]) { error in
+        db.collection("hEntry").addDocument(data: ["user": user, "location": location, "intensity": intensity, "duration": duration, "trigger": trigger, "remedy": remedy, "sleep": sleep, "notes": notes, "breakfast": breakfast, "lunch": lunch, "dinner": dinner, "waterAmount": waterAmount, "exerciseEntry": exerciseEntry]) { error in
             if error == nil {
                 //no errors
                 print("No errors")
@@ -101,6 +95,7 @@ class AppViewModel: ObservableObject {
         }
 
     }
+    
     
     //function that gets the possible location options from db
     func getLocations() {

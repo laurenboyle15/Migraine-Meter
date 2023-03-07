@@ -1,7 +1,7 @@
 //
 //  HeadacheObjects.swift
 //  Migraine_Meter
-//
+//  Holds all structs related to headaches
 //  Created by lauren boyle on 2/27/23.
 //
 
@@ -22,7 +22,8 @@ struct FoodLog: Identifiable, Codable, Equatable {
 }
 
 struct HeadacheEntry: Identifiable, Codable, Equatable {
-    let id = UUID()
+    var id: String
+    var user: String
     var location: String
     var intensity: String
     var duration: String
@@ -30,8 +31,14 @@ struct HeadacheEntry: Identifiable, Codable, Equatable {
     var remedy: String
     var sleep: String
     var notes: String
+    var breakfast: String
+    var lunch: String
+    var dinner: String
+    var waterAmount: String
+    var exerciseEntry: String
     
     #if DEBUG
-    static let examplehEntry = HeadacheEntry(location: "Eyes", intensity: "8", duration: "4 hours", trigger: "weather", remedy: "medication", sleep: "8 hours", notes: "slept it off")
+    static let examplehEntry = HeadacheEntry(id: "10", user: "lb123@gmail.com", location: "Eyes", intensity: "8", duration: "4 hours", trigger: "weather", remedy: "medication", sleep: "8 hours", notes: "slept it off", breakfast: "Eggs, Bagel, Cheese", lunch: "salad", dinner: "spaghetti and meatballs", waterAmount: "40 fl oz", exerciseEntry: "1 mile run")
     #endif
 }
+

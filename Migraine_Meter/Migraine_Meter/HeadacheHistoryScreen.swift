@@ -1,7 +1,7 @@
 //
 //  HeadacheHistoryScreen.swift
 //  Migraine_Meter
-//
+//  Displays all user migraine entries read in from DB
 //  Created by lauren boyle on 2/21/23.
 //
 

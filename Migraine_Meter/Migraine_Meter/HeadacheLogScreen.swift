@@ -1,7 +1,7 @@
 //
 //  HeadacheLogScreen.swift
 //  Migraine_Meter
-//
+//  Screen where users can input data for migraine entry. Saves to db
 //  Created by lauren boyle on 2/20/23.
 //
 
@@ -28,6 +28,20 @@ struct HeadacheLogScreen: View {
     @State private var pickedSleepLength = "8 hours"
     let sleepLength = ["Less than 4 hours", "4 hours", "5 hours", "6 hours", "7 hours", "8 hours", "9 hours", "10 hours", "Over 10 hours"]
     @State private var notes = ""
+    
+    //toggles whether food entry or not
+    @State private var food = false
+    @State private var breakfast = ""
+    @State private var lunch = ""
+    @State private var dinner = ""
+    
+    //toggles whether water entry or not
+    @State private var water = false
+    @State private var waterAmount = ""
+    
+    //toggles whether water entry or not
+    @State private var exercise = false
+    @State private var exerciseEntry = ""
     
     let entryHeadache: HeadacheEntry
     //let food: FoodLog
@@ -116,17 +130,47 @@ struct HeadacheLogScreen: View {
                 HStack {
                     Image(systemName: "plus.app.fill")
                         .foregroundColor(.blue)
-                    Text("Food")
+                    Button("Food") {
+                        food.toggle()
+                    }
+                    
+                    //whether these fields should appear or not
+                    if food {
+                        VStack {
+                            TextField("Breakfast", text: $breakfast)
+                            TextField("Lunch", text: $lunch)
+                            TextField("Dinner", text: $dinner)
+                        }
+                    }
+                    
                 }
                 HStack {
                     Image(systemName: "plus.app.fill")
                     .foregroundColor(.blue)
-                    Text("Water")
+                    Button("Water") {
+                        water.toggle()
+                    }
+                    
+                    //whether fields should appear or not
+                    if water {
+                        VStack {
+                            TextField("Fluid Ounces", text: $waterAmount)
+                        }
+                    }
                 }
                 HStack {
                     Image(systemName: "plus.app.fill")
                     .foregroundColor(.blue)
-                    Text("Exercise")
+                    Button("Exercise") {
+                        exercise.toggle()
+                    }
+                    
+                    //whether fields should appear
+                    if exercise {
+                        VStack {
+                            TextField("Exercise", text: $exerciseEntry)
+                        }
+                    }
                 }
             }
             Section {
@@ -134,18 +178,18 @@ struct HeadacheLogScreen: View {
                     .frame(height: 80)
             }
             Button("Add Entry") {
-                viewModel.saveHeadacheEntry(user: userEmail ?? userName, location: location, intensity: pickedIntensity, duration: pickedDuration, trigger: pickedTrigger, remedy: pickedRemedy, sleep: pickedSleepLength, notes: notes)
+                viewModel.saveHeadacheEntry(user: userEmail ?? userName, location: location, intensity: pickedIntensity, duration: pickedDuration, trigger: pickedTrigger, remedy: pickedRemedy, sleep: pickedSleepLength, notes: notes, breakfast: breakfast, lunch: lunch, dinner: dinner, waterAmount: waterAmount, exerciseEntry: exerciseEntry)
             }
             //}
             
         }
         
             //Button {
-             //   viewModel.signOut()
+            //   viewModel.signOut()
             //} label: {
             //    Text("Sign Out")
             //        .foregroundColor(Color.red)
-           // }
+            // }
        // }
     }
 }
