@@ -84,9 +84,9 @@ class AppViewModel: ObservableObject {
     }
     
     //saves headache entry to db
-    func saveHeadacheEntry(user: String, location: String, intensity: String, duration: String, trigger: String, remedy: String, sleep: String, notes: String, breakfast: String, lunch: String, dinner: String, waterAmount: String, exerciseEntry: String) {
+    func saveHeadacheEntry(user: String, location: String, intensity: String, duration: String, trigger: String, remedy: String, sleep: String, notes: String, breakfast: String, lunch: String, dinner: String, waterAmount: String, exerciseEntry: String, date: Date) {
         let db = Firestore.firestore()
-        db.collection("hEntry").addDocument(data: ["user": user, "location": location, "intensity": intensity, "duration": duration, "trigger": trigger, "remedy": remedy, "sleep": sleep, "notes": notes, "breakfast": breakfast, "lunch": lunch, "dinner": dinner, "waterAmount": waterAmount, "exerciseEntry": exerciseEntry]) { error in
+        db.collection("hEntry").addDocument(data: ["user": user, "location": location, "intensity": intensity, "duration": duration, "trigger": trigger, "remedy": remedy, "sleep": sleep, "notes": notes, "breakfast": breakfast, "lunch": lunch, "dinner": dinner, "waterAmount": waterAmount, "exerciseEntry": exerciseEntry, "date": date]) { error in
             if error == nil {
                 //no errors
                 print("No errors")
@@ -129,7 +129,8 @@ class AppViewModel: ObservableObject {
                                                  lunch: d["lunch"] as? String ?? "",
                                                  dinner: d["dinner"] as? String ?? "",
                                                  waterAmount: d["waterAmount"] as? String ?? "",
-                                                 exerciseEntry: d["exerciseEntry"] as? String ?? "")
+                                                 exerciseEntry: d["exerciseEntry"] as? String ?? "",
+                                                 date: d["date"] as? Date ?? Date.now)
                         }
                     }
                 }
@@ -137,6 +138,47 @@ class AppViewModel: ObservableObject {
                 //handle errors
             }
         }
+    }
+    
+    //get subset of headache entries from db
+    func getUserHEntry() {
+        //ref to db
+        let db = Firestore.firestore()
+        
+        //read docs for this user
+        db.collection("hEntry").whereField("user", isEqualTo: Auth.auth().currentUser?.email ?? "").getDocuments { snapshot, error in
+            //check for errors
+            if error == nil {
+                //no errors
+                
+                if let snapshot = snapshot {
+                    DispatchQueue.main.async {
+                        //get all docs and create an entry
+                        self.headacheHistory = snapshot.documents.map { d in
+                            //create entry item for each doc of this user
+                            return HeadacheEntry(id: d.documentID,
+                                                 user: d["user"] as? String ?? "",
+                                                 location: d["location"] as? String ?? "",
+                                                 intensity: d["intensity"] as? String ?? "",
+                                                 duration: d["duration"] as? String ?? "",
+                                                 trigger: d["trigger"] as? String ?? "",
+                                                 remedy: d["remedy"] as? String ?? "",
+                                                 sleep: d["sleep"] as? String ?? "",
+                                                 notes: d["notes"] as? String ?? "",
+                                                 breakfast: d["breakfast"] as? String ?? "",
+                                                 lunch: d["lunch"] as? String ?? "",
+                                                 dinner: d["dinner"] as? String ?? "",
+                                                 waterAmount: d["waterAmount"] as? String ?? "",
+                                                 exerciseEntry: d["exerciseEntry"] as? String ?? "",
+                                                 date: d["date"] as? Date ?? Date.now)
+                        }
+                    }
+                }
+            } else {
+                //handle errors
+            }
+        }
+        
     }
     
     //function that gets the possible location options from db

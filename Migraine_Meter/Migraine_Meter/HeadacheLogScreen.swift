@@ -178,7 +178,7 @@ struct HeadacheLogScreen: View {
                     .frame(height: 80)
             }
             Button("Add Entry") {
-                viewModel.saveHeadacheEntry(user: userEmail ?? userName, location: location, intensity: pickedIntensity, duration: pickedDuration, trigger: pickedTrigger, remedy: pickedRemedy, sleep: pickedSleepLength, notes: notes, breakfast: breakfast, lunch: lunch, dinner: dinner, waterAmount: waterAmount, exerciseEntry: exerciseEntry)
+                viewModel.saveHeadacheEntry(user: userEmail ?? userName, location: location, intensity: pickedIntensity, duration: pickedDuration, trigger: pickedTrigger, remedy: pickedRemedy, sleep: pickedSleepLength, notes: notes, breakfast: breakfast, lunch: lunch, dinner: dinner, waterAmount: waterAmount, exerciseEntry: exerciseEntry, date: Date.now)
             }
             //}
             
