@@ -43,6 +43,9 @@ struct HeadacheLogScreen: View {
     @State private var exercise = false
     @State private var exerciseEntry = ""
     
+    //for date
+    let date = Date.now
+    
     let entryHeadache: HeadacheEntry
     //let food: FoodLog
     

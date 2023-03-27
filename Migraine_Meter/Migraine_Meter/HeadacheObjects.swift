@@ -37,9 +37,16 @@ struct HeadacheEntry: Identifiable, Codable, Equatable {
     var waterAmount: String
     var exerciseEntry: String
     var date: Date
+    var dateString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, dd 'of' MMMM"
+        return formatter.string(from: date)
+    }
+    
     
     #if DEBUG
     static let examplehEntry = HeadacheEntry(id: "10", user: "lb123@gmail.com", location: "Eyes", intensity: "8", duration: "4 hours", trigger: "weather", remedy: "medication", sleep: "8 hours", notes: "slept it off", breakfast: "Eggs, Bagel, Cheese", lunch: "salad", dinner: "spaghetti and meatballs", waterAmount: "40 fl oz", exerciseEntry: "1 mile run", date: Date.now)
     #endif
 }
+
 

@@ -6,16 +6,62 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import FirebaseCore
+import Firebase
+import FirebaseFirestore
 
 struct HeadacheHistoryScreen: View {
     @EnvironmentObject var viewModel: AppViewModel
     @ObservedObject var model = AppViewModel()
     //for the date picker
     @State private var date = Date()
-    //are we navigating
-    @State private var navigate = false
+    //for the entry
+    //let entry: HeadacheEntry
     
     var body: some View {
+        NavigationView {
+            List {
+                ForEach(model.headacheHistory) { item in
+                    NavigationLink(destination: EntryDetail(entryDetail: item)) {
+                       /*
+                        if (item.location == "Back") {
+                            Image("Back")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
+                                .clipped()
+                        } else if (item.location == "Eyes") {
+                            Image("Eyes")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
+                                .clipped()
+                        } else if (item.location == "Forehead") {
+                            Image("Forehead")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
+                                .clipped()
+                        } else if (item.location == "Side") {
+                            Image("Side")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
+                                .clipped()
+                        } else {
+                            Image("Top")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
+                                .clipped()
+                        } */
+                        Text(item.date.formatted(date: .long, time: .omitted))
+                    }
+                }
+            }
+            .navigationTitle("Migraine History")
+        }
         /*VStack {
             Text("Your Migraine History")
                 .foregroundColor(Color.blue)
@@ -46,10 +92,10 @@ struct HeadacheHistoryScreen: View {
             List (model.headacheHistory) { item in
                 Text(item.user)
             }
-        }*/
+        }
         List (model.headacheHistory) { item in
             Text(item.user)
-        }
+        } */
     }
     
     init() {

@@ -22,6 +22,7 @@ class AppViewModel: ObservableObject {
         //array to hold food entry
     @Published var headacheHistory = [HeadacheEntry]()
     
+    
     // changes variable in real time
     var isSignedIn: Bool {
         return auth.currentUser != nil
@@ -130,7 +131,7 @@ class AppViewModel: ObservableObject {
                                                  dinner: d["dinner"] as? String ?? "",
                                                  waterAmount: d["waterAmount"] as? String ?? "",
                                                  exerciseEntry: d["exerciseEntry"] as? String ?? "",
-                                                 date: d["date"] as? Date ?? Date.now)
+                                                 date: (d["date"] as? Timestamp)?.dateValue() ?? Date() )
                         }
                     }
                 }
@@ -170,7 +171,7 @@ class AppViewModel: ObservableObject {
                                                  dinner: d["dinner"] as? String ?? "",
                                                  waterAmount: d["waterAmount"] as? String ?? "",
                                                  exerciseEntry: d["exerciseEntry"] as? String ?? "",
-                                                 date: d["date"] as? Date ?? Date.now)
+                                                 date: (d["date"] as? Timestamp)?.dateValue() ?? Date() )
                         }
                     }
                 }
@@ -180,6 +181,7 @@ class AppViewModel: ObservableObject {
         }
         
     }
+    
     
     //function that gets the possible location options from db
     func getLocations() {
