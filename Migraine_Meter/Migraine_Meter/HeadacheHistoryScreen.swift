@@ -16,14 +16,34 @@ struct HeadacheHistoryScreen: View {
     @ObservedObject var model = AppViewModel()
     //for the date picker
     @State private var date = Date()
+    //for navigation
+    @State private var navigation = false
     //for the entry
     //let entry: HeadacheEntry
     
     var body: some View {
         NavigationView {
-            List {
+            VStack {
+                DatePicker("History", selection: $date, displayedComponents: [.date])
+                    .datePickerStyle(.graphical)
                 ForEach(model.headacheHistory) { item in
+                    if (Calendar.current.isDate(date, equalTo: item.date, toGranularity: .day)) {
+                        NavigationLink(destination: EntryDetail(entryDetail: item)) {
+                            Text(item.date.formatted(date: .long, time: .omitted))
+                        }
+                    }
+                }
+            
+            }
+           /*List {
+               ForEach(model.headacheHistory) { item in
                     NavigationLink(destination: EntryDetail(entryDetail: item)) {
+                        Text(item.date.formatted(date: .long, time: .omitted))
+                    }
+                }
+           } */
+           .navigationTitle("Migraine History")
+        }
                        /*
                         if (item.location == "Back") {
                             Image("Back")
@@ -56,12 +76,12 @@ struct HeadacheHistoryScreen: View {
                                 .frame(width: 200, height: 200)
                                 .clipped()
                         } */
-                        Text(item.date.formatted(date: .long, time: .omitted))
-                    }
-                }
-            }
-            .navigationTitle("Migraine History")
-        }
+                            //Text(item.date.formatted(date: .long, time: .omitted))
+                        
+                    
+                
+            //}
+        
         /*VStack {
             Text("Your Migraine History")
                 .foregroundColor(Color.blue)
