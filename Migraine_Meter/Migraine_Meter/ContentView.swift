@@ -182,6 +182,29 @@ class AppViewModel: ObservableObject {
         
     }
     
+    //function to delete user data
+    func deleteUserHEntry(entryToDelete: HeadacheEntry) {
+        //ref to db
+        let db = Firestore.firestore()
+        
+        //specify doc to delete
+        db.collection("hEntry").document(entryToDelete.id).delete { error in
+            //check for errors
+            if error == nil {
+                //no errors
+                
+                //Update UI for main thread
+                DispatchQueue.main.async {
+                    //remove entry from history that was deleted from db
+                    self.headacheHistory.removeAll { entry in
+                        
+                        //Check for the entry to remove
+                        return entry.id == entryToDelete.id
+                    }
+                }
+            }
+        }
+    }
     
     //function that gets the possible location options from db
     func getLocations() {

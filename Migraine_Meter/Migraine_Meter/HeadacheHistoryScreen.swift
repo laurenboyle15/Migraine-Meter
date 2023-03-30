@@ -29,7 +29,16 @@ struct HeadacheHistoryScreen: View {
                 ForEach(model.headacheHistory) { item in
                     if (Calendar.current.isDate(date, equalTo: item.date, toGranularity: .day)) {
                         NavigationLink(destination: EntryDetail(entryDetail: item)) {
-                            Text(item.date.formatted(date: .long, time: .omitted))
+                            HStack {
+                                Text(item.date.formatted(date: .long, time: .omitted))
+                                Spacer()
+                                Button(action: {
+                                    //button to delete entry
+                                    model.deleteUserHEntry(entryToDelete: item)
+                                }, label: {
+                                    Image(systemName: "minus.circle.fill")
+                                })
+                            }
                         }
                     }
                 }
