@@ -38,6 +38,7 @@ struct HeadacheHistoryScreen: View {
                                 }, label: {
                                     Image(systemName: "minus.circle.fill")
                                 })
+                                    .buttonStyle(BorderlessButtonStyle())
                             }
                         }
                     }

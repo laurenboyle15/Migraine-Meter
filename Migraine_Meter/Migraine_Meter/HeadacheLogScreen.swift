@@ -46,6 +46,9 @@ struct HeadacheLogScreen: View {
     //for date
     let date = Date.now
     
+    //toggles whether alert should appear or not
+    @State private var showingAlert = false
+    
     let entryHeadache: HeadacheEntry
     //let food: FoodLog
     
@@ -182,6 +185,28 @@ struct HeadacheLogScreen: View {
             }
             Button("Add Entry") {
                 viewModel.saveHeadacheEntry(user: userEmail ?? userName, location: location, intensity: pickedIntensity, duration: pickedDuration, trigger: pickedTrigger, remedy: pickedRemedy, sleep: pickedSleepLength, notes: notes, breakfast: breakfast, lunch: lunch, dinner: dinner, waterAmount: waterAmount, exerciseEntry: exerciseEntry, date: Date.now)
+                
+                //let user know added
+                showingAlert = true
+                
+                //clear fields
+                location = "Back"
+                pickedIntensity = "3"
+                pickedDuration = "1 hour"
+                pickedTrigger = "Stress"
+                pickedRemedy = "Medication"
+                pickedSleepLength = "8 hours"
+                notes = ""
+                breakfast = ""
+                lunch = ""
+                dinner = ""
+                waterAmount = ""
+                exerciseEntry = ""
+                
+            } .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Saved"),
+                      message: Text("Hang in there. Migraine Meter is here to make your migraine experience a little better. Your entry has been saved."),
+                      dismissButton: .destructive(Text("Dismiss")))
             }
             //}
             

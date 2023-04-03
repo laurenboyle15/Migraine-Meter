@@ -1,7 +1,7 @@
 //
 //  EntryDetail.swift
 //  Migraine_Meter
-//
+//  Holds details on the selected migraine entry
 //  Created by lauren boyle on 3/21/23.
 //
 
@@ -82,7 +82,8 @@ struct EntryDetail: View {
                     Text("Date is: \(entryDetail.date.formatted(date: .long, time: .omitted))")
                 }
             }
-        } .navigationBarTitle("Migraine Details")
+            
+        }.navigationBarTitle("Migraine Details")
     }
 }
 

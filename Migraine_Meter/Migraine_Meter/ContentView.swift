@@ -21,6 +21,8 @@ class AppViewModel: ObservableObject {
     @Published var foodLog = [FoodLog]()
         //array to hold food entry
     @Published var headacheHistory = [HeadacheEntry]()
+        //array for specific user
+    @Published var headachePersonalization = [PersonalizationEntry]()
     
     
     // changes variable in real time
@@ -90,7 +92,10 @@ class AppViewModel: ObservableObject {
         db.collection("hEntry").addDocument(data: ["user": user, "location": location, "intensity": intensity, "duration": duration, "trigger": trigger, "remedy": remedy, "sleep": sleep, "notes": notes, "breakfast": breakfast, "lunch": lunch, "dinner": dinner, "waterAmount": waterAmount, "exerciseEntry": exerciseEntry, "date": date]) { error in
             if error == nil {
                 //no errors
-                print("No errors")
+                //print("No errors")
+                
+                //call get user entry to retrieve latest data
+                self.getUserHEntry()
             } else {
                 
             }
@@ -202,6 +207,73 @@ class AppViewModel: ObservableObject {
                         return entry.id == entryToDelete.id
                     }
                 }
+            }
+        }
+    }
+    
+    //function to update a user entry
+    func updateUserHEntry(entryToUpdate: HeadacheEntry) {
+        //ref to db
+        let db = Firestore.firestore()
+        
+        //specify doc to update
+        db.collection("hEntry").document(entryToUpdate.id).setData(["user": entryToUpdate.user, "location": entryToUpdate.location, "intensity": entryToUpdate.intensity, "duration": entryToUpdate.duration, "trigger": entryToUpdate.trigger, "remedy": entryToUpdate.remedy, "sleep": entryToUpdate.sleep, "notes": entryToUpdate.notes, "breakfast": entryToUpdate.breakfast, "lunch": entryToUpdate.lunch, "dinner": entryToUpdate.dinner, "waterAmount": entryToUpdate.waterAmount, "exerciseEntry": entryToUpdate.exerciseEntry], merge: true) { error in
+            
+            //check for errors
+            if error == nil {
+                //Get new data
+                
+                self.getUserHEntry()
+            }
+        }
+    }
+    
+    //get subset of headache personalizations from db
+    func getUserHPersonalization() {
+        //ref to db
+        let db = Firestore.firestore()
+        
+        //read docs for this user
+        db.collection("hPersonalization").whereField("user", isEqualTo: Auth.auth().currentUser?.email ?? "").getDocuments { snapshot, error in
+            //check for errors
+            if error == nil {
+                //no errors
+                
+                if let snapshot = snapshot {
+                    DispatchQueue.main.async {
+                        //get all docs and create an entry
+                        self.headachePersonalization = snapshot.documents.map { d in
+                            //create entry item for each doc of this user
+                            return PersonalizationEntry(id: d.documentID,
+                                                        medication: d["medication"] as? String ?? "",
+                                                        remedy: d["remedy"] as? String ?? "",
+                                                        trigger: d["trigger"] as? String ?? "",
+                                                        user: d["user"] as? String ?? "")
+                        }
+                    }
+                }
+            } else {
+                //handle errors
+            }
+        }
+    }
+    
+    //add migraine personalization to db
+    func saveHPersonalization(medication: String, remedy: String, trigger: String, user: String) {
+        
+        //ref to db
+        let db = Firestore.firestore()
+        
+        //add doc to collection
+        db.collection("hPersonalization").addDocument(data: ["medication": medication, "remedy": remedy, "trigger": trigger, "user": user]) { error in
+            //check for errors
+            if error == nil {
+                //no errors
+                
+                //call get personalization to get latest data
+                self.getUserHPersonalization()
+            } else {
+                //handle errors
             }
         }
     }

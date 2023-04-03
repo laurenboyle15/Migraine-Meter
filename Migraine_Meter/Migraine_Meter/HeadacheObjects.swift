@@ -49,4 +49,15 @@ struct HeadacheEntry: Identifiable, Codable, Equatable {
     #endif
 }
 
+struct PersonalizationEntry: Identifiable, Codable, Equatable {
+    var id: String
+    var medication: String
+    var remedy: String
+    var trigger: String
+    var user: String
+    
+#if DEBUG
+static let examplepEntry = PersonalizationEntry(id: "10",medication: "Gabapentin", remedy: "sleep", trigger: "weather", user: "lb123@gmail.com")
+#endif
+}
 
