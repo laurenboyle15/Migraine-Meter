@@ -211,6 +211,7 @@ class AppViewModel: ObservableObject {
         }
     }
     
+    
     //function to update a user entry
     func updateUserHEntry(entryToUpdate: HeadacheEntry) {
         //ref to db
@@ -277,6 +278,64 @@ class AppViewModel: ObservableObject {
             }
         }
     }
+    
+    //function to delete user personalization medication field
+    func deleteUserHPersonalizationMed(personalizationFieldToDelete: PersonalizationEntry) {
+        //ref to db
+        let db = Firestore.firestore()
+        
+        //specify doc to delete
+        db.collection("hPersonalization").document(personalizationFieldToDelete.id).updateData(["medication": FieldValue.delete()]) { error in
+            //check for errors
+            if error == nil {
+                //no errors
+                
+                //call get personalization to get latest data
+                self.getUserHPersonalization()
+            } else {
+                //handle errors
+            }
+        }
+    }
+    
+    //function to delete user personalization remedy field
+    func deleteUserHPersonalizationRem(personalizationFieldToDelete: PersonalizationEntry) {
+        //ref to db
+        let db = Firestore.firestore()
+        
+        //specify doc to delete
+        db.collection("hPersonalization").document(personalizationFieldToDelete.id).updateData(["remedy": FieldValue.delete()]) { error in
+            //check for errors
+            if error == nil {
+                //no errors
+                
+                //call get personalization to get latest data
+                self.getUserHPersonalization()
+            } else {
+                //handle errors
+            }
+        }
+    }
+    
+    //function to delete user personalization trigger field
+    func deleteUserHPersonalizationTrigger(personalizationFieldToDelete: PersonalizationEntry) {
+        //ref to db
+        let db = Firestore.firestore()
+        
+        //specify doc to delete
+        db.collection("hPersonalization").document(personalizationFieldToDelete.id).updateData(["trigger": FieldValue.delete()]) { error in
+            //check for errors
+            if error == nil {
+                //no errors
+                
+                //call get personalization to get latest data
+                self.getUserHPersonalization()
+            } else {
+                //handle errors
+            }
+        }
+    }
+
     
     //function that gets the possible location options from db
     func getLocations() {

@@ -24,6 +24,9 @@ struct HeadachePersonalizationScreen: View {
     var userEmail = Auth.auth().currentUser?.email
     var userName = ""
     
+    //toggles whether alert should appear or not
+    @State private var showingAlert = false
+    
     var body: some View {
         VStack {
             Text("Personalize Your Migraine Experience")
@@ -36,7 +39,17 @@ struct HeadachePersonalizationScreen: View {
                             .fontWeight(.black)) {
                     ForEach(model.headachePersonalization) { item in
                         if(item.medication != "") {
-                            Text(item.medication)
+                            HStack {
+                                Text(item.medication)
+                                Spacer()
+                                Button(action: {
+                                    //button to delete entry
+                                    model.deleteUserHPersonalizationMed(personalizationFieldToDelete: item)
+                                }, label: {
+                                    Image(systemName: "minus.circle.fill")
+                                })
+                                    .buttonStyle(BorderlessButtonStyle())
+                            }
                         }
                     }
                 }
@@ -45,7 +58,17 @@ struct HeadachePersonalizationScreen: View {
                             .fontWeight(.black)) {
                     ForEach(model.headachePersonalization) { item in
                         if (item.remedy != "") {
-                            Text(item.remedy)
+                            HStack {
+                                Text(item.remedy)
+                                Spacer()
+                                Button(action: {
+                                    //button to delete entry
+                                    model.deleteUserHPersonalizationRem(personalizationFieldToDelete: item)
+                                }, label: {
+                                    Image(systemName: "minus.circle.fill")
+                                })
+                                    .buttonStyle(BorderlessButtonStyle())
+                            }
                         }
                     }
                 }
@@ -54,7 +77,17 @@ struct HeadachePersonalizationScreen: View {
                             .fontWeight(.black)) {
                     ForEach(model.headachePersonalization) { item in
                         if (item.trigger != "") {
-                            Text(item.trigger)
+                            HStack {
+                                Text(item.trigger)
+                                Spacer()
+                                Button(action: {
+                                    //button to delete entry
+                                    model.deleteUserHPersonalizationTrigger(personalizationFieldToDelete: item)
+                                }, label: {
+                                    Image(systemName: "minus.circle.fill")
+                                })
+                                    .buttonStyle(BorderlessButtonStyle())
+                            }
                         }
                     }
                 }
@@ -81,6 +114,7 @@ struct HeadachePersonalizationScreen: View {
                 }, label: {
                     Text("Add personalizations")
                 })
+        
             }
             .padding()
             /*Button {
