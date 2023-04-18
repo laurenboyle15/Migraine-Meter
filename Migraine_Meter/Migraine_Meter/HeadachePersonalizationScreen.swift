@@ -27,10 +27,14 @@ struct HeadachePersonalizationScreen: View {
     //toggles whether alert should appear or not
     @State private var showingAlert = false
     
+    //toggles whether user wants to edit or not
+    @State private var showEditTrigger = false
+    @State private var editedTrigger = ""
+    
     var body: some View {
         VStack {
             Text("Personalize Your Migraine Experience")
-                .foregroundColor(Color.blue)
+                .foregroundColor(Color.black)
                 .font(.largeTitle)
                 .fontWeight(.bold)
             Form {
@@ -80,6 +84,36 @@ struct HeadachePersonalizationScreen: View {
                             HStack {
                                 Text(item.trigger)
                                 Spacer()
+                                
+                                Button(action: {
+                                    //toggel edit text field
+                                    showEditTrigger.toggle()
+                                }, label: {
+                                    Image(systemName: "pencil")
+                                    .foregroundColor(.blue)
+                                })
+                                    .buttonStyle(BorderlessButtonStyle()) 
+                                
+                                //whether fields should appear
+                                if showEditTrigger {
+                                    HStack {
+                                        TextField("Update", text: $editedTrigger)
+                                        Button(action: {
+                                            //button to update entry
+                                            model.updateUserHPersonalizationTrigger(personalizationFieldToUpdate: item, update: editedTrigger)
+                                            //clear field
+                                            editedTrigger = ""
+                                            showEditTrigger = false
+                                        }, label: {
+                                            Image(systemName: "checkmark.circle.fill")
+                                        })
+                                            .buttonStyle(BorderlessButtonStyle())
+                                        
+                                    }
+                                }
+                                
+                                
+                                //Spacer()
                                 Button(action: {
                                     //button to delete entry
                                     model.deleteUserHPersonalizationTrigger(personalizationFieldToDelete: item)

@@ -13,7 +13,7 @@ import FirebaseFirestore
 
 struct HeadacheLogScreen: View {
     @EnvironmentObject var viewModel: AppViewModel
-    //@ObservedObject var model = AppViewModel()
+    @ObservedObject var model = AppViewModel()
    
     @State private var location = "Back"
     let locations = ["Back", "Eyes", "Forehead", "Side", "Top"]
@@ -220,6 +220,7 @@ struct HeadacheLogScreen: View {
             // }
        // }
     }
+
 }
 
 struct HeadacheLogScreen_Previews: PreviewProvider {
