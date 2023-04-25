@@ -21,8 +21,9 @@ class AppViewModel: ObservableObject {
     @Published var foodLog = [FoodLog]()
         //array to hold food entry
     @Published var headacheHistory = [HeadacheEntry]()
-        //array for specific user
+        //array for specific user hister
     @Published var headachePersonalization = [PersonalizationEntry]()
+        //array for specific user personalizations
     
     
     // changes variable in real time

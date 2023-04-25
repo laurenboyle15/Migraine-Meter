@@ -85,6 +85,7 @@ struct HeadachePersonalizationScreen: View {
                                 Text(item.trigger)
                                 Spacer()
                                 
+                                
                                 Button(action: {
                                     //toggel edit text field
                                     showEditTrigger.toggle()
@@ -92,7 +93,7 @@ struct HeadachePersonalizationScreen: View {
                                     Image(systemName: "pencil")
                                     .foregroundColor(.blue)
                                 })
-                                    .buttonStyle(BorderlessButtonStyle()) 
+                                    .buttonStyle(BorderlessButtonStyle())
                                 
                                 //whether fields should appear
                                 if showEditTrigger {
@@ -111,6 +112,8 @@ struct HeadachePersonalizationScreen: View {
                                         
                                     }
                                 }
+                                
+                                
                                 
                                 
                                 //Spacer()

@@ -135,6 +135,69 @@ struct HeadacheAnalyticsScreen: View {
         return foodTriggersArray
     }
     
+    //to find common triggers
+    var commonTriggers: [String] {
+        //array to hold all trigger entries
+        var ctArray = [String]()
+        
+        //array to hold possible food triggers
+        var commonTriggersArray = [String]()
+        
+        //now have array of triggers when migraine this month
+        for item in model.headacheHistory {
+            //check if the user entries occured in current month
+            if (Calendar.current.isDate(item.date, equalTo: currentDate, toGranularity: .month)) {
+                ctArray.append(item.trigger)
+            }
+        }
+        
+        //make array count duplicate keys
+        var counts: [String: Int] = [:]
+        
+        //loop through array and increment value of key if occurs again
+        for item in ctArray {
+            counts[item] = (counts[item] ?? 0) + 1
+        }
+        
+        //checking the key value counts and adding to returned array
+        for(key, value) in counts {
+            if (value > 2) {
+                commonTriggersArray.append(key)
+            }
+        }
+        
+        return commonTriggersArray
+    }
+    
+    //to find when migraine occurs from dehydration
+    var hydrationTrigger: Int {
+        var count = 0
+        
+        for item in model.headacheHistory {
+            //check if the user entries occured in current month
+            if (Calendar.current.isDate(item.date, equalTo: currentDate, toGranularity: .month)) {
+                //check if migraine entry had enough water
+                //using mayo clinic
+                //3.7 liter men = about 120 fl oz
+                //2.7 liter women = about 91 fl oz
+                //right now using 8 cups = 65 fl oz
+                //convert amount to double
+                let waterAmountDouble = Double(item.waterAmount) ?? 0
+                //still need to check if female
+                if (waterAmountDouble < 65) {
+                    count = count + 1
+                }
+                //still need to check if male
+               // if (currentUserSex == "Male" && waterAmountDouble < 100) {
+               //     count = count + 1
+               // }
+        
+            }
+        }
+        
+        return count
+    }
+    
     var body: some View {
         
         VStack {
@@ -153,17 +216,51 @@ struct HeadacheAnalyticsScreen: View {
                 Section(header: Text("Report for this month")
                             .font(.largeTitle)
                             .fontWeight(.black)) {
-                    Text("Total migraines: \(countNum)")
-                    Text("Average Intensity: \(avgIntensity)")
-                    Text("Average Duration: \(avgDuration) hours")
                     HStack {
-                        Text("Possible food triggers: ")
+                        Text("Total migraines: ")
+                        Spacer()
+                        Text("\(countNum)")
+                    }
+                    HStack {
+                        Text("Average Intensity: ")
+                        Spacer()
+                        Text("\(avgIntensity)")
+                    }
+                    HStack {
+                        Text("Average Duration:  ")
+                        Spacer()
+                        Text("\(avgDuration) hours")
+                    }
+                    HStack {
+                        Text("Possible triggers: ")
+                        Spacer()
+                        VStack {
+                            ForEach(commonTriggers, id: \.self) { trigger in
+                                Text(trigger)
+                            }
+                            if (hydrationTrigger > 2) {
+                                Text("Dehydration")
+                            }
+                        }
+                    }
+                    HStack {
+                        Image(systemName: "fork.knife.circle.fill")
+                        Text("Foods to keep an eye on: ")
+                        Spacer()
                         VStack {
                             ForEach(foodTriggers, id: \.self) { food in
                                 Text(food)
                             }
                         }
                     }
+                   /* if (hydrationTrigger > 2) {
+                        HStack {
+                            Image(systemName: "drop.fill")
+                            Text("Possible triggered from dehydration: ")
+                            Spacer()
+                            Text("\(hydrationTrigger)")
+                        }
+                    } */
                 }
                 
                 Button {

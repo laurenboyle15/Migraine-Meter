@@ -22,6 +22,7 @@
 		D08C4DED299C0B7700FDDCBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08C4DEC299C0B7700FDDCBA /* GoogleService-Info.plist */; };
 		D08C4DEF299C106500FDDCBA /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C4DEE299C106500FDDCBA /* SignInView.swift */; };
 		D08C4DF1299C113100FDDCBA /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C4DF0299C113100FDDCBA /* SignUpScreen.swift */; };
+		D0C62B5E29F72BBB007865F1 /* UpdateTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C62B5D29F72BBB007865F1 /* UpdateTrigger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		D08C4DEC299C0B7700FDDCBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D08C4DEE299C106500FDDCBA /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		D08C4DF0299C113100FDDCBA /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
+		D0C62B5D29F72BBB007865F1 /* UpdateTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTrigger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				D08A04A229A53ED900489A69 /* HeadacheAnalyticsScreen.swift */,
 				D08A04A629AD59D100489A69 /* HeadacheLocationOptions.swift */,
 				D08A04A829AD5A6200489A69 /* HeadacheObjects.swift */,
+				D0C62B5D29F72BBB007865F1 /* UpdateTrigger.swift */,
 			);
 			path = Migraine_Meter;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				D08A04A129A53EC700489A69 /* HeadachePersonalizationScreen.swift in Sources */,
 				D08A04A929AD5A6200489A69 /* HeadacheObjects.swift in Sources */,
 				D08A04A329A53ED900489A69 /* HeadacheAnalyticsScreen.swift in Sources */,
+				D0C62B5E29F72BBB007865F1 /* UpdateTrigger.swift in Sources */,
 				D08A049D29A40F0700489A69 /* HeadacheLogScreen.swift in Sources */,
 				D08C4DDC299BFE1D00FDDCBA /* ContentView.swift in Sources */,
 				D08C4DDA299BFE1D00FDDCBA /* Migraine_MeterApp.swift in Sources */,
