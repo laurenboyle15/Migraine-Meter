@@ -48,6 +48,8 @@ struct HeadacheLogScreen: View {
     
     //toggles whether alert should appear or not
     @State private var showingAlert = false
+    //alert for pain scale info
+    @State private var showingPainScaleAlert = false
     
     let entryHeadache: HeadacheEntry
     //let food: FoodLog
@@ -58,159 +60,171 @@ struct HeadacheLogScreen: View {
     var userName = ""
     
     var body: some View {
-        Form {
-            Section(header: Text("Migraine Entry")
-                        .font(.largeTitle)
-                        .fontWeight(.black)) {
-                Picker("Where is your pain located?", selection: $location) {
-                    ForEach(locations, id: \.self) {
+        NavigationView {
+            Form {
+                Section(header: Text("Migraine Entry")
+                            .font(.largeTitle)
+                            .fontWeight(.black)) {
+                    Picker("Where is your pain located?", selection: $location) {
+                        ForEach(locations, id: \.self) {
+                                Text($0)
+                        }
+                    }
+                        if (location == "Back") {
+                            Image("Back")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
+                                .clipped()
+                        } else if (location == "Eyes") {
+                            Image("Eyes")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
+                                .clipped()
+                        } else if (location == "Forehead") {
+                            Image("Forehead")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
+                                .clipped()
+                        } else if (location == "Side") {
+                            Image("Side")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
+                                .clipped()
+                        } else {
+                            Image("Top")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
+                                .clipped()
+                        }
+                    VStack {
+                        NavigationLink(destination: MigrainePainScaleInfo()) {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.blue)
+                        }
+                        Picker("Intensity", selection: $pickedIntensity) {
+                            ForEach(intensity, id: \.self) {
+                                Text($0)
+                            }
+                        }.pickerStyle(SegmentedPickerStyle())
+                        //Spacer()
+                    }
+                   /* Picker("Intensity", selection: $pickedIntensity) {
+                        ForEach(intensity, id: \.self) {
                             Text($0)
-                    }
-                }
-                    if (location == "Back") {
-                        Image("Back")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200, height: 200)
-                            .clipped()
-                    } else if (location == "Eyes") {
-                        Image("Eyes")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200, height: 200)
-                            .clipped()
-                    } else if (location == "Forehead") {
-                        Image("Forehead")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200, height: 200)
-                            .clipped()
-                    } else if (location == "Side") {
-                        Image("Side")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200, height: 200)
-                            .clipped()
-                    } else {
-                        Image("Top")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200, height: 200)
-                            .clipped()
-                    }
+                        }
+                    }.pickerStyle(SegmentedPickerStyle()) */
+                    
+                    Picker("Duration", selection: $pickedDuration) {
+                        ForEach(duration, id: \.self) {
+                            Text($0)
+                        }
+                    }.padding()
+                        .border(.black, width:4)
 
-                Picker("Intensity", selection: $pickedIntensity) {
-                    ForEach(intensity, id: \.self) {
-                        Text($0)
-                    }
-                }.pickerStyle(SegmentedPickerStyle())
-                
-                Picker("Duration", selection: $pickedDuration) {
-                    ForEach(duration, id: \.self) {
-                        Text($0)
-                    }
-                }.padding()
-                    .border(.black, width:4)
+                    Picker("Trigger", selection: $pickedTrigger) {
+                        ForEach(trigger, id: \.self) {
+                            Text($0)
+                        }
+                    }.padding()
+                        .border(.black, width:4)
 
-                Picker("Trigger", selection: $pickedTrigger) {
-                    ForEach(trigger, id: \.self) {
-                        Text($0)
+                    Picker("Remedy", selection: $pickedRemedy) {
+                        ForEach(remedy, id: \.self) {
+                            Text($0)
+                        }
+                    }.padding()
+                        .border(.black, width:4)
+                                
+                    Picker("Sleep", selection: $pickedSleepLength) {
+                        ForEach(sleepLength, id: \.self) {
+                            Text($0)
+                        }
+                    }.padding()
+                        .border(.black, width:4)
+                    
+                    HStack {
+                        Image(systemName: "plus.app.fill")
+                            .foregroundColor(.blue)
+                        Button("Food") {
+                            food.toggle()
+                        }
+                        
+                        //whether these fields should appear or not
+                        if food {
+                            VStack {
+                                TextField("Breakfast", text: $breakfast)
+                                TextField("Lunch", text: $lunch)
+                                TextField("Dinner", text: $dinner)
+                            }
+                        }
+                        
                     }
-                }.padding()
-                    .border(.black, width:4)
-
-                Picker("Remedy", selection: $pickedRemedy) {
-                    ForEach(remedy, id: \.self) {
-                        Text($0)
-                    }
-                }.padding()
-                    .border(.black, width:4)
-                            
-                Picker("Sleep", selection: $pickedSleepLength) {
-                    ForEach(sleepLength, id: \.self) {
-                        Text($0)
-                    }
-                }.padding()
-                    .border(.black, width:4)
-                
-                HStack {
-                    Image(systemName: "plus.app.fill")
+                    HStack {
+                        Image(systemName: "plus.app.fill")
                         .foregroundColor(.blue)
-                    Button("Food") {
-                        food.toggle()
-                    }
-                    
-                    //whether these fields should appear or not
-                    if food {
-                        VStack {
-                            TextField("Breakfast", text: $breakfast)
-                            TextField("Lunch", text: $lunch)
-                            TextField("Dinner", text: $dinner)
+                        Button("Water") {
+                            water.toggle()
+                        }
+                        
+                        //whether fields should appear or not
+                        if water {
+                            VStack {
+                                TextField("Fluid Ounces", text: $waterAmount)
+                            }
                         }
                     }
-                    
-                }
-                HStack {
-                    Image(systemName: "plus.app.fill")
-                    .foregroundColor(.blue)
-                    Button("Water") {
-                        water.toggle()
-                    }
-                    
-                    //whether fields should appear or not
-                    if water {
-                        VStack {
-                            TextField("Fluid Ounces", text: $waterAmount)
+                    HStack {
+                        Image(systemName: "plus.app.fill")
+                        .foregroundColor(.blue)
+                        Button("Exercise") {
+                            exercise.toggle()
                         }
-                    }
-                }
-                HStack {
-                    Image(systemName: "plus.app.fill")
-                    .foregroundColor(.blue)
-                    Button("Exercise") {
-                        exercise.toggle()
-                    }
-                    
-                    //whether fields should appear
-                    if exercise {
-                        VStack {
-                            TextField("Exercise", text: $exerciseEntry)
+                        
+                        //whether fields should appear
+                        if exercise {
+                            VStack {
+                                TextField("Exercise", text: $exerciseEntry)
+                            }
                         }
                     }
                 }
-            }
-            Section {
-                TextField("Other Notes...", text: $notes)
-                    .frame(height: 80)
-            }
-            Button("Add Entry") {
-                viewModel.saveHeadacheEntry(user: userEmail ?? userName, location: location, intensity: pickedIntensity, duration: pickedDuration, trigger: pickedTrigger, remedy: pickedRemedy, sleep: pickedSleepLength, notes: notes, breakfast: breakfast, lunch: lunch, dinner: dinner, waterAmount: waterAmount, exerciseEntry: exerciseEntry, date: Date.now)
+                Section {
+                    TextField("Other Notes...", text: $notes)
+                        .frame(height: 80)
+                }
+                Button("Add Entry") {
+                    viewModel.saveHeadacheEntry(user: userEmail ?? userName, location: location, intensity: pickedIntensity, duration: pickedDuration, trigger: pickedTrigger, remedy: pickedRemedy, sleep: pickedSleepLength, notes: notes, breakfast: breakfast, lunch: lunch, dinner: dinner, waterAmount: waterAmount, exerciseEntry: exerciseEntry, date: Date.now)
+                    
+                    //let user know added
+                    showingAlert = true
+                    
+                    //clear fields
+                    location = "Back"
+                    pickedIntensity = "3"
+                    pickedDuration = "1 hour"
+                    pickedTrigger = "Stress"
+                    pickedRemedy = "Medication"
+                    pickedSleepLength = "8 hours"
+                    notes = ""
+                    breakfast = ""
+                    lunch = ""
+                    dinner = ""
+                    waterAmount = ""
+                    exerciseEntry = ""
+                    
+                } .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Saved"),
+                          message: Text("Hang in there. Migraine Meter is here to make your migraine experience a little better. Your entry has been saved."),
+                          dismissButton: .destructive(Text("Dismiss")))
+                }
+                //}
                 
-                //let user know added
-                showingAlert = true
-                
-                //clear fields
-                location = "Back"
-                pickedIntensity = "3"
-                pickedDuration = "1 hour"
-                pickedTrigger = "Stress"
-                pickedRemedy = "Medication"
-                pickedSleepLength = "8 hours"
-                notes = ""
-                breakfast = ""
-                lunch = ""
-                dinner = ""
-                waterAmount = ""
-                exerciseEntry = ""
-                
-            } .alert(isPresented: $showingAlert) {
-                Alert(title: Text("Saved"),
-                      message: Text("Hang in there. Migraine Meter is here to make your migraine experience a little better. Your entry has been saved."),
-                      dismissButton: .destructive(Text("Dismiss")))
             }
-            //}
-            
-        }
         
             //Button {
             //   viewModel.signOut()
@@ -219,8 +233,8 @@ struct HeadacheLogScreen: View {
             //        .foregroundColor(Color.red)
             // }
        // }
+        } .navigationBarHidden(true)
     }
-
 }
 
 struct HeadacheLogScreen_Previews: PreviewProvider {
