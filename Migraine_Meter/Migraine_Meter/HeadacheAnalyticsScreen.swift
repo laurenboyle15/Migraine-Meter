@@ -198,6 +198,32 @@ struct HeadacheAnalyticsScreen: View {
         return count
     }
     
+    //to find when migraine occurs from lack of sleep
+    var sleepTrigger: Int {
+        var count = 0
+        
+        for item in model.headacheHistory {
+            //check if the user entries occured in current month
+            if (Calendar.current.isDate(item.date, equalTo: currentDate, toGranularity: .month)) {
+                //check if migraine entry had enough sleep
+                //using 8 hours as baseline
+                //convert amount to double
+                let sleepAmountDouble = Double(item.sleep) ?? 0
+                //still need to check if female
+                if (sleepAmountDouble < 8) {
+                    count = count + 1
+                }
+                //still need to check if male
+               // if (currentUserSex == "Male" && waterAmountDouble < 100) {
+               //     count = count + 1
+               // }
+        
+            }
+        }
+        
+        return count
+    }
+    
     var body: some View {
         
         VStack {
@@ -240,6 +266,9 @@ struct HeadacheAnalyticsScreen: View {
                             }
                             if (hydrationTrigger > 2) {
                                 Text("Dehydration")
+                            }
+                            if (sleepTrigger > 2) {
+                                Text("Lack of Sleep")
                             }
                         }
                     }
