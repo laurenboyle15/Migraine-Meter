@@ -33,142 +33,142 @@ struct HeadachePersonalizationScreen: View {
     
     var body: some View {
         NavigationView {
-        VStack {
-            Text("Personalize Your Migraine Experience")
-                .foregroundColor(Color.black)
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            Form {
-                Section(header: Text("Medication")
-                            .font(.largeTitle)
-                            .fontWeight(.black)) {
-                    ForEach(model.headachePersonalization) { item in
-                        if(item.medication != "") {
-                            HStack {
-                                Text(item.medication)
-                                Spacer(minLength: 10)
-                                NavigationLink(destination: UpdateMedication(updateMedication: item)) {
-                                    Image(systemName: "pencil")
-                                }
-                                Button(action: {
-                                    //button to delete entry
-                                    model.deleteUserHPersonalizationMed(personalizationFieldToDelete: item)
-                                }, label: {
-                                    Image(systemName: "minus.circle.fill")
-                                })
-                                    .buttonStyle(BorderlessButtonStyle())
-                            }
-                        }
-                    }
-                }
-                Section(header: Text("Remedies")
-                            .font(.largeTitle)
-                            .fontWeight(.black)) {
-                    ForEach(model.headachePersonalization) { item in
-                        if (item.remedy != "") {
-                            HStack {
-                                Text(item.remedy)
-                                Spacer(minLength: 10)
-                                NavigationLink(destination: UpdateRemedy(updateRemedy: item)) {
-                                    Image(systemName: "pencil")
-                                }
-                                Button(action: {
-                                    //button to delete entry
-                                    model.deleteUserHPersonalizationRem(personalizationFieldToDelete: item)
-                                }, label: {
-                                    Image(systemName: "minus.circle.fill")
-                                })
-                                    .buttonStyle(BorderlessButtonStyle())
-                            }
-                        }
-                    }
-                }
-                Section(header: Text("Triggers")
-                            .font(.largeTitle)
-                            .fontWeight(.black)) {
-                    ForEach(model.headachePersonalization) { item in
-                        if (item.trigger != "") {
-                            HStack {
-                                Text(item.trigger)
-                                Spacer(minLength: 10)
-                                NavigationLink(destination: UpdateTrigger(updateTrigger: item)) {
-                                    Image(systemName: "pencil")
-                                }
-                                /*Button(action: {
-                                    //toggel edit text field
-                                    showEditTrigger.toggle()
-                                }, label: {
-                                    Image(systemName: "pencil")
-                                    .foregroundColor(.blue)
-                                })
-                                    .buttonStyle(BorderlessButtonStyle()) */
-                                
-                               /* //whether fields should appear
-                                if showEditTrigger {
-                                    HStack {
-                                        TextField("Update", text: $editedTrigger)
-                                        Button(action: {
-                                            //button to update entry
-                                            model.updateUserHPersonalizationTrigger(personalizationFieldToUpdate: item, update: editedTrigger)
-                                            //clear field
-                                            editedTrigger = ""
-                                            showEditTrigger = false
-                                        }, label: {
-                                            Image(systemName: "checkmark.circle.fill")
-                                        })
-                                            .buttonStyle(BorderlessButtonStyle())
-                                        
+            VStack {
+                Text("Personalize Your Migraine Experience")
+                    .foregroundColor(Color.black)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                Form {
+                    Section(header: Text("Medication")
+                                .font(.largeTitle)
+                                .fontWeight(.black)) {
+                        ForEach(model.headachePersonalization) { item in
+                            if(item.medication != "") {
+                                HStack {
+                                    Text(item.medication)
+                                    Spacer(minLength: 10)
+                                    NavigationLink(destination: UpdateMedication(updateMedication: item)) {
+                                        Image(systemName: "pencil")
                                     }
-                                } */
-                                
-                                //Spacer()
-                                Button(action: {
-                                    //button to delete entry
-                                    model.deleteUserHPersonalizationTrigger(personalizationFieldToDelete: item)
-                                }, label: {
-                                    Image(systemName: "minus.circle.fill")
-                                })
-                                    .buttonStyle(BorderlessButtonStyle())
+                                    Button(action: {
+                                        //button to delete entry
+                                        model.deleteUserHPersonalizationMed(personalizationFieldToDelete: item)
+                                    }, label: {
+                                        Image(systemName: "minus.circle.fill")
+                                    })
+                                        .buttonStyle(BorderlessButtonStyle())
+                                }
                             }
                         }
                     }
+                    Section(header: Text("Remedies")
+                                .font(.largeTitle)
+                                .fontWeight(.black)) {
+                        ForEach(model.headachePersonalization) { item in
+                            if (item.remedy != "") {
+                                HStack {
+                                    Text(item.remedy)
+                                    Spacer(minLength: 10)
+                                    NavigationLink(destination: UpdateRemedy(updateRemedy: item)) {
+                                        Image(systemName: "pencil")
+                                    }
+                                    Button(action: {
+                                        //button to delete entry
+                                        model.deleteUserHPersonalizationRem(personalizationFieldToDelete: item)
+                                    }, label: {
+                                        Image(systemName: "minus.circle.fill")
+                                    })
+                                        .buttonStyle(BorderlessButtonStyle())
+                                }
+                            }
+                        }
+                    }
+                    Section(header: Text("Triggers")
+                                .font(.largeTitle)
+                                .fontWeight(.black)) {
+                        ForEach(model.headachePersonalization) { item in
+                            if (item.trigger != "") {
+                                HStack {
+                                    Text(item.trigger)
+                                    Spacer(minLength: 10)
+                                    NavigationLink(destination: UpdateTrigger(updateTrigger: item)) {
+                                        Image(systemName: "pencil")
+                                    }
+                                    /*Button(action: {
+                                        //toggel edit text field
+                                        showEditTrigger.toggle()
+                                    }, label: {
+                                        Image(systemName: "pencil")
+                                        .foregroundColor(.blue)
+                                    })
+                                        .buttonStyle(BorderlessButtonStyle()) */
+                                    
+                                   /* //whether fields should appear
+                                    if showEditTrigger {
+                                        HStack {
+                                            TextField("Update", text: $editedTrigger)
+                                            Button(action: {
+                                                //button to update entry
+                                                model.updateUserHPersonalizationTrigger(personalizationFieldToUpdate: item, update: editedTrigger)
+                                                //clear field
+                                                editedTrigger = ""
+                                                showEditTrigger = false
+                                            }, label: {
+                                                Image(systemName: "checkmark.circle.fill")
+                                            })
+                                                .buttonStyle(BorderlessButtonStyle())
+                                            
+                                        }
+                                    } */
+                                    
+                                    //Spacer()
+                                    Button(action: {
+                                        //button to delete entry
+                                        model.deleteUserHPersonalizationTrigger(personalizationFieldToDelete: item)
+                                    }, label: {
+                                        Image(systemName: "minus.circle.fill")
+                                    })
+                                        .buttonStyle(BorderlessButtonStyle())
+                                }
+                            }
+                        }
+                    }
+                } .refreshable {
+                    model.getUserHPersonalization()
                 }
-            } .refreshable {
-                model.getUserHPersonalization()
-            }
-            
-            Divider()
-            
-            VStack(spacing: 5) {
-                TextField("Medication", text: $medication)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                TextField("Remedy", text: $remedy)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                TextField("Trigger", text: $trigger)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
                 
-                Button(action: {
-                    //call save h personal
-                    viewModel.saveHPersonalization(medication: medication, remedy: remedy, trigger: trigger, user: userEmail ?? userName)
-                    //clear fields
-                    medication = ""
-                    remedy = ""
-                    trigger = ""
+                Divider()
+                
+                VStack(spacing: 5) {
+                    TextField("Medication", text: $medication)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    TextField("Remedy", text: $remedy)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    TextField("Trigger", text: $trigger)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                     
-                }, label: {
-                    Text("Add personalizations")
-                })
-        
+                    Button(action: {
+                        //call save h personal
+                        viewModel.saveHPersonalization(medication: medication, remedy: remedy, trigger: trigger, user: userEmail ?? userName)
+                        //clear fields
+                        medication = ""
+                        remedy = ""
+                        trigger = ""
+                        
+                    }, label: {
+                        Text("Add personalizations")
+                    })
+            
+                }
+                .padding()
+                /*Button {
+                    viewModel.signOut()
+                } label: {
+                    Text("Sign Out")
+                        .foregroundColor(Color.red)
+                }
+            } */
             }
-            .padding()
-            /*Button {
-                viewModel.signOut()
-            } label: {
-                Text("Sign Out")
-                    .foregroundColor(Color.red)
-            }
-        } */
-        }
         }
     }
     init() {

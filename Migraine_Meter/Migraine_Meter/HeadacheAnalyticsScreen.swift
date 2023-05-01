@@ -23,6 +23,9 @@ struct HeadacheAnalyticsScreen: View {
     //to get current date
     @State private var currentDate = Date.now
     
+    //toggles whether alert should appear or not
+    @State private var showingAlert = false
+    
     //to count the migraines
     var countNum: Int {
         var count = 0
@@ -224,13 +227,87 @@ struct HeadacheAnalyticsScreen: View {
         return count
     }
     
-    var body: some View {
-        
-        VStack {
+    var textView: some View {
+        VStack(spacing: 20){
             Text("Migraine Meter")
                 .foregroundColor(Color.red)
                 .font(.largeTitle)
                 .fontWeight(.bold)
+            
+           // Form {
+           //     Section(header: Text("Report for this month")
+           //                 .font(.largeTitle)
+           //                 .fontWeight(.black)) {
+                    HStack {
+                        Text("Total migraines: ")
+                        Spacer()
+                        Text("\(countNum)")
+                    }
+          
+                    HStack {
+                        Text("Average Intensity: ")
+                        Spacer()
+                        Text("\(avgIntensity)")
+                    }
+           
+                    HStack {
+                        Text("Average Duration:  ")
+                        Spacer()
+                        Text("\(avgDuration) hours")
+                    }
+            
+                    HStack {
+                        Text("Possible triggers: ")
+                        Spacer()
+                        VStack {
+                            ForEach(commonTriggers, id: \.self) { trigger in
+                                Text(trigger)
+                            }
+                            if (hydrationTrigger > 2) {
+                                Text("Dehydration")
+                            }
+                            if (sleepTrigger > 2) {
+                                Text("Lack of Sleep")
+                            }
+                        }
+                    }
+                    HStack {
+                        Image(systemName: "fork.knife.circle.fill")
+                        Text("Foods to keep an eye on: ")
+                        Spacer()
+                        VStack {
+                            ForEach(foodTriggers, id: \.self) { food in
+                                Text(food)
+                            }
+                        }
+                    }
+                   /* if (hydrationTrigger > 2) {
+                        HStack {
+                            Image(systemName: "drop.fill")
+                            Text("Possible triggered from dehydration: ")
+                            Spacer()
+                            Text("\(hydrationTrigger)")
+                        }
+                    } */
+             //   }
+                
+                
+            //    Button {
+            //         viewModel.signOut()
+            //     } label: {
+            //         Text("Sign Out")
+            //             .foregroundColor(Color.red)
+            //     }
+           // }
+        }
+    }
+    
+    var body: some View {
+        VStack {
+            /*Text("Migraine Meter")
+                .foregroundColor(Color.red)
+                .font(.largeTitle)
+                .fontWeight(.bold) */
            /* Button {
                 viewModel.signOut()
             } label: {
@@ -238,7 +315,7 @@ struct HeadacheAnalyticsScreen: View {
                     .foregroundColor(Color.red)
             } */
             
-            Form {
+          /*  Form {
                 Section(header: Text("Report for this month")
                             .font(.largeTitle)
                             .fontWeight(.black)) {
@@ -292,6 +369,7 @@ struct HeadacheAnalyticsScreen: View {
                     } */
                 }
                 
+                
                 Button {
                      viewModel.signOut()
                  } label: {
@@ -299,12 +377,59 @@ struct HeadacheAnalyticsScreen: View {
                          .foregroundColor(Color.red)
                  }
                 
+                
+                
+            } */
+            Divider()
+            
+            textView
+            
+            Divider()
+            
+            HStack {
+                Button("Save Report") {
+                    let image = textView.snapshot()
+                    
+                    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                    
+                    //let user know added
+                    showingAlert = true
+                } .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Saved to camera roll"),
+                          dismissButton: .destructive(Text("Dismiss")))
+                }
+                Spacer()
+                Button {
+                     viewModel.signOut()
+                 } label: {
+                     Text("Sign Out")
+                         .foregroundColor(Color.red)
+                 }
             }
+            
         }
     }
     
     init() {
         model.getUserHEntry()
+    }
+}
+
+//for screenshot
+extension View {
+    func snapshot() -> UIImage {
+        let controller = UIHostingController(rootView: self.edgesIgnoringSafeArea(.all))
+        let view = controller.view
+
+        let targetSize = controller.view.intrinsicContentSize
+        view?.bounds = CGRect(origin: .zero, size: targetSize)
+        view?.backgroundColor = .clear
+
+        let renderer = UIGraphicsImageRenderer(size: targetSize)
+
+        return renderer.image { _ in
+            view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
+        }
     }
 }
 
