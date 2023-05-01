@@ -1,8 +1,8 @@
 //
-//  UpdateTrigger.swift
+//  UpdateRemedy.swift
 //  Migraine_Meter
-//  Allows user to update their trigger
-//  Created by lauren boyle on 4/24/23.
+//  Allows user to update a remedy
+//  Created by lauren boyle on 5/1/23.
 //
 
 import SwiftUI
@@ -11,12 +11,12 @@ import FirebaseCore
 import Firebase
 import FirebaseFirestore
 
-struct UpdateTrigger: View {
+struct UpdateRemedy: View {
     @EnvironmentObject var viewModel: AppViewModel
     @ObservedObject var model = AppViewModel()
     
-    let updateTrigger: PersonalizationEntry
-    @State private var editedTrigger = ""
+    let updateRemedy: PersonalizationEntry
+    @State private var editedRemedy = ""
     
     //to get current user
     let db = Firestore.firestore()
@@ -25,20 +25,21 @@ struct UpdateTrigger: View {
     var body: some View {
         NavigationView {
             HStack {
-                Text(updateTrigger.trigger)
-                TextField("Update", text: $editedTrigger)
+                Text(updateRemedy.remedy)
+                Spacer()
+                TextField("Update", text: $editedRemedy)
                 Button("Save") {
-                    model.updateUserHPersonalizationTrigger(personalizationFieldToUpdate: updateTrigger, update: editedTrigger)
-                    editedTrigger = ""
+                    model.updateUserHPersonalizationRemedy(personalizationFieldToUpdate: updateRemedy, update: editedRemedy)
+                    editedRemedy = ""
                 }
             } .navigationBarHidden(true)
         }
     }
 }
 
-struct UpdateTrigger_Previews: PreviewProvider {
+struct UpdateRemedy_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateTrigger(updateTrigger: PersonalizationEntry.examplepEntry)
+        UpdateRemedy(updateRemedy: PersonalizationEntry.examplepEntry)
             .environmentObject(AppViewModel())
     }
 }

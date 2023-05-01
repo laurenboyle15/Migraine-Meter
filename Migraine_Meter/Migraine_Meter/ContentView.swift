@@ -354,6 +354,40 @@ class AppViewModel: ObservableObject {
         }
     }
     
+    //function to update personalization
+    func updateUserHPersonalizationMedication(personalizationFieldToUpdate: PersonalizationEntry, update: String) {
+        //get ref to db
+        let db = Firestore.firestore()
+        
+        //set data to update
+        db.collection("hPersonalization").document(personalizationFieldToUpdate.id).setData(["medication": /*personalizationFieldToUpdate.trigger, "trigger": */update], merge: true) { error in
+            //check for errors
+            if error == nil {
+                //get updated data
+                self.getUserHPersonalization()
+            } else {
+                //handle errors
+            }
+        }
+    }
+    
+    //function to update personalization
+    func updateUserHPersonalizationRemedy(personalizationFieldToUpdate: PersonalizationEntry, update: String) {
+        //get ref to db
+        let db = Firestore.firestore()
+        
+        //set data to update
+        db.collection("hPersonalization").document(personalizationFieldToUpdate.id).setData(["remedy": /*personalizationFieldToUpdate.trigger, "trigger": */update], merge: true) { error in
+            //check for errors
+            if error == nil {
+                //get updated data
+                self.getUserHPersonalization()
+            } else {
+                //handle errors
+            }
+        }
+    }
+    
     //function that gets the possible location options from db
     func getLocations() {
         let db = Firestore.firestore()

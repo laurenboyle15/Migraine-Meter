@@ -32,6 +32,7 @@ struct HeadachePersonalizationScreen: View {
     @State private var editedTrigger = ""
     
     var body: some View {
+        NavigationView {
         VStack {
             Text("Personalize Your Migraine Experience")
                 .foregroundColor(Color.black)
@@ -45,7 +46,10 @@ struct HeadachePersonalizationScreen: View {
                         if(item.medication != "") {
                             HStack {
                                 Text(item.medication)
-                                Spacer()
+                                Spacer(minLength: 10)
+                                NavigationLink(destination: UpdateMedication(updateMedication: item)) {
+                                    Image(systemName: "pencil")
+                                }
                                 Button(action: {
                                     //button to delete entry
                                     model.deleteUserHPersonalizationMed(personalizationFieldToDelete: item)
@@ -64,7 +68,10 @@ struct HeadachePersonalizationScreen: View {
                         if (item.remedy != "") {
                             HStack {
                                 Text(item.remedy)
-                                Spacer()
+                                Spacer(minLength: 10)
+                                NavigationLink(destination: UpdateRemedy(updateRemedy: item)) {
+                                    Image(systemName: "pencil")
+                                }
                                 Button(action: {
                                     //button to delete entry
                                     model.deleteUserHPersonalizationRem(personalizationFieldToDelete: item)
@@ -83,19 +90,20 @@ struct HeadachePersonalizationScreen: View {
                         if (item.trigger != "") {
                             HStack {
                                 Text(item.trigger)
-                                Spacer()
-                                
-                                
-                                Button(action: {
+                                Spacer(minLength: 10)
+                                NavigationLink(destination: UpdateTrigger(updateTrigger: item)) {
+                                    Image(systemName: "pencil")
+                                }
+                                /*Button(action: {
                                     //toggel edit text field
                                     showEditTrigger.toggle()
                                 }, label: {
                                     Image(systemName: "pencil")
                                     .foregroundColor(.blue)
                                 })
-                                    .buttonStyle(BorderlessButtonStyle())
+                                    .buttonStyle(BorderlessButtonStyle()) */
                                 
-                                //whether fields should appear
+                               /* //whether fields should appear
                                 if showEditTrigger {
                                     HStack {
                                         TextField("Update", text: $editedTrigger)
@@ -111,10 +119,7 @@ struct HeadachePersonalizationScreen: View {
                                             .buttonStyle(BorderlessButtonStyle())
                                         
                                     }
-                                }
-                                
-                                
-                                
+                                } */
                                 
                                 //Spacer()
                                 Button(action: {
@@ -128,6 +133,8 @@ struct HeadachePersonalizationScreen: View {
                         }
                     }
                 }
+            } .refreshable {
+                model.getUserHPersonalization()
             }
             
             Divider()
@@ -162,8 +169,8 @@ struct HeadachePersonalizationScreen: View {
             }
         } */
         }
+        }
     }
-    
     init() {
         model.getUserHPersonalization()
     }
