@@ -30,7 +30,10 @@ struct SignUpScreen: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                Image("Image 1")
+                /*Image("Image 1")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)*/
+                Image("MigraineMeterLogo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                // Image("180")

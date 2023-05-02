@@ -61,3 +61,8 @@ static let examplepEntry = PersonalizationEntry(id: "10",medication: "Gabapentin
 #endif
 }
 
+
+//background color
+struct CustomColorBackground {
+    static let myColor = Color("ColorBackgroundBlue")
+}

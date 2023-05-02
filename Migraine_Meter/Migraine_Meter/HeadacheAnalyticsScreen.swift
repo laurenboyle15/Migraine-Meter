@@ -299,7 +299,7 @@ struct HeadacheAnalyticsScreen: View {
             //             .foregroundColor(Color.red)
             //     }
            // }
-        }
+        } 
     }
     
     var body: some View {

@@ -25,9 +25,14 @@ struct SignInView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    Text("Welcome to Migraine Meter")
-                        .font(.largeTitle)
-                    Image("Image 1")
+                    Text("Welcome") // to Migraine Meter")
+                        .font(.system(.largeTitle,
+                                      design: .rounded)
+                              .weight(.bold))
+                   /* Image("Image 1")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit) */
+                    Image("MigraineMeterLogo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                     //Image("180")
